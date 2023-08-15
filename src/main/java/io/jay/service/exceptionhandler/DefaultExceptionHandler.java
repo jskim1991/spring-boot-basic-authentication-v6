@@ -13,6 +13,7 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler(AuthenticationException.class)
     public ProblemDetail handleException(AuthenticationException e) {
+        System.out.println("handling AuthenticationException");
         var p = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, e.getMessage());
         p.setTitle("Failed to authenticate");
         p.setInstance(URI.create("/api/test"));

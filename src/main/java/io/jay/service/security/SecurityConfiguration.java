@@ -36,11 +36,8 @@ public class SecurityConfiguration {
                         .authenticated()
         );
 
-        // basic authentication
-        http.httpBasic(withDefaults());
-
-        // exception handling
-        http.exceptionHandling(configurer -> configurer.authenticationEntryPoint(authenticationEntryPoint));
+        // basic authentication & exception handling
+        http.httpBasic(configurer -> configurer.authenticationEntryPoint(authenticationEntryPoint));
 
         http.authenticationProvider(authenticationProvider);
 
